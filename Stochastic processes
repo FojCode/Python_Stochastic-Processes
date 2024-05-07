@@ -59,3 +59,9 @@ x, y = polar_method(n_samples, a, b)
 # Plot the generated samples (using matplotlib)
 import matplotlib.pyplot as plt
 
+plt.scatter(x, y)
+plt.xlabel("X")
+plt.ylabel("Y")
+plt.title("Polar Method Samples within Rectangle")
+plt.grid(True)
+plt.show()
