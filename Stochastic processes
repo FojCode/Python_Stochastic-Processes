@@ -57,7 +57,7 @@ expected_time = expected_reach_time(transition_matrix, initial_state, target_sta
 if expected_time is not None:
   print(f"Expected time to reach state {target_state} from state {initial_state}: {expected_time}")
 else:
-  print(f"State {target_state})
+  print(f"State {target_state} is not reachable from state {initial_state}.")
 
 # Maximum value of Brownian motion using Monte Carlo simulation 
 import numpy as np
