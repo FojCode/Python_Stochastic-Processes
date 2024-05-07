@@ -1,3 +1,21 @@
+# Monte Carlo simulation - box Muller formulae 
+import numpy as np
+
+def box_muller(u1, u2):
+  """
+  This function generates two independent standard normal variables using the Box-Muller transform.
+
+  Args:
+      u1: A random number uniformly distributed between 0 and 1.
+      u2: Another random number uniformly distributed between 0 and 1 (independent of u1).
+
+  Returns:
+      A tuple containing two independent standard normal variables (z1, z2).
+  """
+  z1 = np.sqrt(-2 * np.log(u1)) * np.cos(2 * np.pi * u2)
+  z2 = np.sqrt(-2 * np.log(u1)) * np.sin(2 * np.pi * u2)
+  return z1, z2
+
 
 
 # monte Carlo simulation - polar method
