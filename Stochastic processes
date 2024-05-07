@@ -37,6 +37,26 @@ plt.title("Distribution of Maximum Value of Brownian Motion (Approximation)")
 plt.grid(True)
 plt.show()
 
+# martingale difference sequence 
+import numpy as np
+
+def brownian_motion(n_steps, sigma):
+  """
+  This function simulates a standard Brownian motion path.
+
+  Args:
+      n_steps: The number of steps in the simulation.
+      sigma: The standard deviation of the increments (diffusion coefficient).
+
+  Returns:
+      A numpy array representing the Brownian motion path.
+  """
+  increments = np.random.normal(scale=sigma, size=n_steps)
+  bm_path = np.cumsum(increments)
+  return bm_path
+
+
+
 # Brownian motion hitting times - method 1
 import numpy as np
 
