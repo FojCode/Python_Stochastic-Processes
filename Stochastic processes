@@ -1,3 +1,25 @@
+# Kolmogorov forward differential equations 
+import numpy as np
+
+def kolmogorov_fd(drift, diffusion, u0, x_min, x_max, t_max, dx, dt):
+  """
+  This function solves the Kolmogorov forward equation using a finite difference method.
+
+  Args:
+      drift: A function representing the drift term (mu(x)).
+      diffusion: A function representing the diffusion term (sigma^2(x) / 2).
+      u0: The initial probability density function (PDF) as a numpy array.
+      x_min: Minimum value of the spatial domain.
+      x_max: Maximum value of the spatial domain.
+      t_max: Maximum time horizon.
+      dx: Spatial grid spacing.
+      dt: Time step size.
+
+  Returns:
+      A numpy array representing the solution (PDF) at different time steps.
+  """
+
+
 # expected time to reach k of kolmogorov jump processes 
 def expected_reach_time(transition_matrix, initial_state, target_state):
   """
