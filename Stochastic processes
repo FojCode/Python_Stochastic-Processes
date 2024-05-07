@@ -38,3 +38,24 @@ def polar_method(n_samples, a, b):
   # Generate uniform random variables
   u1 = np.random.rand(n_samples)
   u2 = np.random.rand(n_samples)
+
+# Apply polar transformation
+  theta = 2 * np.pi * u1  # Random angles between 0 and 2*pi
+  radius = np.sqrt(u2)  # Radius based on second uniform random variable
+
+  # Convert to rectangular coordinates (x, y)
+  x = a + radius * b * np.cos(theta)
+  y = radius * np.sin(theta)
+
+  return x, y
+
+# Example usage
+n_samples = 1000
+a = 0.0
+b = 1.0
+
+x, y = polar_method(n_samples, a, b)
+
+# Plot the generated samples (using matplotlib)
+import matplotlib.pyplot as plt
+
