@@ -19,6 +19,24 @@ def expected_reach_time(transition_matrix, initial_state, target_state):
   first_passage_time = [float('inf')] * n_states
   first_passage_time[target_state] = 0  # Reaching target state from itself takes 0 time
 
+  # Initialize first passage times (time to reach target state for the first time)
+  first_passage_time = [float('inf')] * n_states
+  first_passage_time[target_state] = 0  # Reaching target state from itself takes 0 time
+
+  # Iteration to calculate first passage times
+  has_changed = True
+  while has_changed:
+    has_changed = False
+    for i in range(n_states):
+      if first_passage_time[i] == float('inf'):
+        continue
+      for j in range(n_states):
+        if j != target_state and transition_matrix[i][j] > 0:
+          new_time = first_passage_time[i] + 1 / transition_matrix[i][j]
+          if new_time < first_passage_time[j]:
+            first_passage_time[j] = new_time
+            has_changed = True
+
 
 
 # Maximum value of Brownian motion using Monte Carlo simulation 
