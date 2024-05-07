@@ -31,6 +31,30 @@ if hitting_time is not None:
 else:
   print(f"Boundary {boundary} not reached within {n_steps} steps.")
 
+# Brownian motion hitting times - method 2
+
+from scipy.optimize import minimize
+
+def hitting_time_minimize(n_steps, sigma, boundary):
+  """
+  This function simulates the hitting time of Brownian motion using minimization.
+
+  Args:
+      n_steps: The number of steps in the simulation (represents maximum time).
+      sigma: The standard deviation of the increments (diffusion coefficient).
+      boundary: The hitting level (positive or negative).
+
+  Returns:
+      The hitting time (step number) or None if not reached within n_steps.
+  """
+  def distance_to_boundary(x):
+    # Objective function: distance between current value (x) and boundary
+    return np.abs(x - boundary)
+
+  # Simulate Brownian motion path
+  bm_path = sigma * np.random.normal(scale=1/np.sqrt(2), size=n_steps)
+
+
 # Ornstein Uhlenbeck process 
 import numpy as np
 
