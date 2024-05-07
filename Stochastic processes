@@ -1,0 +1,22 @@
+
+
+# monte Carlo simulation - polar method
+import numpy as np
+
+def polar_method(n_samples, a, b):
+  """
+  This function generates random samples within a rectangle using the polar method.
+
+  Args:
+      n_samples: The number of samples to generate.
+      a: The lower bound of the rectangle (x-axis).
+      b: The upper bound of the rectangle (x-axis).
+
+  Returns:
+      A tuple containing two numpy arrays:
+          - x: The generated x-coordinates within the rectangle.
+          - y: The generated y-coordinates within the rectangle (uniformly distributed).
+  """
+  # Generate uniform random variables
+  u1 = np.random.rand(n_samples)
+  u2 = np.random.rand(n_samples)
