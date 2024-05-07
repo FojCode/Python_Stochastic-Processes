@@ -40,7 +40,13 @@ process_path = orenstein_uhlenbeck(mu, theta, sigma, dt, T, initial_state)
 
 # Plot the simulated path (using matplotlib)
 import matplotlib.pyplot as plt
-
+t = np.arange(0, T + dt, dt)
+plt.plot(t, process_path)
+plt.xlabel("Time")
+plt.ylabel("Process value")
+plt.title("Simulated Ornstein-Uhlenbeck Process")
+plt.grid(True)
+plt.show()
 
 # Monte Carlo simulation - box Muller formulae 
 import numpy as np
