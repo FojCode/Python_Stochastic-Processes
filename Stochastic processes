@@ -20,7 +20,22 @@ def max_brownian_motion(n_sims, n_steps, sigma):
     max_values[i] = np.max(bm_path)
   return max_values
 
+# Example usage
+n_sims = 10000
+n_steps = 1000
+sigma = 0.1
 
+max_values = max_brownian_motion(n_sims, n_steps, sigma)
+
+# Plot the distribution (histogram)
+import matplotlib.pyplot as plt
+
+plt.hist(max_values, bins=50, density=True)  # Normalize to get probability density
+plt.xlabel("Maximum value")
+plt.ylabel("Probability density")
+plt.title("Distribution of Maximum Value of Brownian Motion (Approximation)")
+plt.grid(True)
+plt.show()
 
 # Brownian motion hitting times - method 1
 import numpy as np
