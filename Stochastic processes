@@ -38,6 +38,25 @@ def kolmogorov_fd(drift, diffusion, u0, x_min, x_max, t_max, dx, dt):
 def drift(x):
   return x  # Example drift
 
+def diffusion(x):
+  return 1.0  # Example diffusion (constant)
+
+x_min = -1.0
+x_max = 1.0
+t_max = 0.5
+dx = 0.01
+dt = 0.001
+u0 = np.exp(-x**2)  # Example initial PDF
+
+u_solution = kolmogorov_fd(drift, diffusion, u0, x_min, x_max, t_max, dx, dt)
+
+# Plot results (using matplotlib)
+import matplotlib.pyplot as plt
+
+for i in range(0, len(u_solution), 10):
+  plt.plot(x, u_solution[i], label=f"t = {i * dt:.2f}")
+
+
 
 # expected time to reach k of kolmogorov jump processes 
 def expected_reach_time(transition_matrix, initial_state, target_state):
