@@ -1,3 +1,24 @@
+# expected time to reach k of kolmogorov jump processes 
+def expected_reach_time(transition_matrix, initial_state, target_state):
+  """
+  This function calculates the expected time to reach state 'k' from state 'i' in a Markov jump process.
+
+  Args:
+      transition_matrix: A 2D list representing the transition probability matrix.
+      initial_state: The starting state (integer).
+      target_state: The target state to reach (integer).
+
+  Returns:
+      The expected time to reach the target state from the initial state, or None if not reachable.
+  """
+  n_states = len(transition_matrix)  # Number of states
+  if target_state == initial_state:
+    return 0  # Already in the target state
+
+  # Initialize first passage times (time to reach target state for the first time)
+  first_passage_time = [float('inf')] * n_states
+  first_passage_time[target_state] = 0  # Reaching target state from itself takes 0 time
+
 
 
 # Maximum value of Brownian motion using Monte Carlo simulation 
