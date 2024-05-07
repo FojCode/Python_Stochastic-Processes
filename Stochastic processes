@@ -1,3 +1,5 @@
+
+
 # Maximum value of Brownian motion using Monte Carlo simulation 
 import numpy as np
 from scipy.stats import norm
@@ -55,7 +57,27 @@ def brownian_motion(n_steps, sigma):
   bm_path = np.cumsum(increments)
   return bm_path
 
+def martingale_increments(bm_path):
+  """
+  This function calculates the increments (differences) of a Brownian motion path.
 
+  Args:
+      bm_path: A numpy array representing the Brownian motion path.
+
+  Returns:
+      A numpy array representing the increments (differences) of the path.
+  """
+  return np.diff(bm_path)
+
+# Example usage
+n_steps = 1000
+sigma = 0.1
+bm_sim = brownian_motion(n_steps, sigma)
+increments = martingale_increments(bm_sim)
+
+# Check expected value of future increment conditioned on the past (ideally close to 0)
+print(f"Expected value of next increment: {np.mean(increments[1:])}")
+This code simulates a Brownian motion path
 
 # Brownian motion hitting times - method 1
 import numpy as np
