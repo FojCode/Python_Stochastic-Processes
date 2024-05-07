@@ -16,7 +16,14 @@ def box_muller(u1, u2):
   z2 = np.sqrt(-2 * np.log(u1)) * np.sin(2 * np.pi * u2)
   return z1, z2
 
+# Example usage
+u1 = np.random.rand()  # Generate a random number between 0 and 1
+u2 = np.random.rand()  # Generate another independent random number between 0 and 1
 
+z1, z2 = box_muller(u1, u2)
+
+print(f"Standard normal variable 1: {z1}")
+print(f"Standard normal variable 2: {z2}")
 
 # monte Carlo simulation - polar method
 import numpy as np
