@@ -56,7 +56,12 @@ import matplotlib.pyplot as plt
 for i in range(0, len(u_solution), 10):
   plt.plot(x, u_solution[i], label=f"t = {i * dt:.2f}")
 
-
+plt.xlabel("x")
+plt.ylabel("Probability density")
+plt.title("Solution of the Kolmogorov Forward Equation")
+plt.legend()
+plt.grid(True)
+plt.show()
 
 # expected time to reach k of kolmogorov jump processes 
 def expected_reach_time(transition_matrix, initial_state, target_state):
