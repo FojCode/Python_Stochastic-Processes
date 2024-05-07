@@ -18,6 +18,25 @@ def kolmogorov_fd(drift, diffusion, u0, x_min, x_max, t_max, dx, dt):
   Returns:
       A numpy array representing the solution (PDF) at different time steps.
   """
+# Grid points
+  x = np.linspace(x_min, x_max, int((x_max - x_min) / dx) + 1)
+  # Time steps
+  t = np.arange(0, t_max + dt, dt)
+  # Solution matrix
+  u = np.zeros((len(t), len(x)))
+  # Initial condition
+  u[0] = u0
+
+  # Finite difference scheme (explicit for simplicity)
+  for i in range(1, len(t)):
+    for j in range(1, len(x) - 1):
+      du_dt = -(drift(x[j]) * (u[i, j + 1] - u[i, j - 1]) / (2 * dx)) + (diffusion(x[j]) * (u[i, j + 1] - 2 * u[i, j] + u[i, j - 1]) / (dx**2))
+      u[i, j] = u[i-1, j] + du_dt * dt
+  return u
+
+# Example usage (assuming specific drift and diffusion functions)
+def drift(x):
+  return x  # Example drift
 
 
 # expected time to reach k of kolmogorov jump processes 
