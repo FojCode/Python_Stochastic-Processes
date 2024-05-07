@@ -53,6 +53,24 @@ def hitting_time_minimize(n_steps, sigma, boundary):
 
   # Simulate Brownian motion path
   bm_path = sigma * np.random.normal(scale=1/np.sqrt(2), size=n_steps)
+  # Simulate Brownian motion path
+  bm_path = sigma * np.random.normal(scale=1/np.sqrt(2), size=n_steps)
+
+  # Find minimum distance (hitting time) using minimization
+  res = minimize(distance_to_boundary, bm_path[0], method='Nelder-Mead')
+  hitting_time = int(res.x[0])  # Assuming minimum corresponds to hitting time
+  
+  # Check if minimum is within the path (avoiding minimization errors)
+  if hitting_time >= 0 and hitting_time < n_steps and np.abs(bm_path[hitting_time] - boundary) < 1e-5:
+    return hitting_time + 1  # Return step number (1-based indexing)
+  else:
+    return None
+
+# Example usage (same as previous example)
+n_steps = 1000
+sigma = 0.2
+boundary = 1.0
+
 
 
 # Ornstein Uhlenbeck process 
