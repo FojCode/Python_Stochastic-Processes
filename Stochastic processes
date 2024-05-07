@@ -19,6 +19,18 @@ def hitting_time_loop(n_steps, sigma, boundary):
       return i + 1  # Return step number (1-based indexing)
   return None
 
+# Example usage
+n_steps = 1000
+sigma = 0.2
+boundary = 1.0
+
+hitting_time = hitting_time_loop(n_steps, sigma, boundary)
+
+if hitting_time is not None:
+  print(f"Hitting time for boundary {boundary}: {hitting_time}")
+else:
+  print(f"Boundary {boundary} not reached within {n_steps} steps.")
+
 # Ornstein Uhlenbeck process 
 import numpy as np
 
